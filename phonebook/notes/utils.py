@@ -1,6 +1,6 @@
 from typing import List
 
-from .models import Contact
+from models import Contact
 
 
 def read_contactsList(filename: str) -> List:
@@ -44,7 +44,7 @@ def edit_contact(filename: str, edited_contact: Contact) -> None:
             break
     write_contacts(filename, contacts)
 
-def searchInPhonebook(filename: str, **kwargs) -> List:
+def searchInPhonebook(filename: str, **kwargs: object) -> List:
     """Searches in the list by all the model attributes."""
     contacts = read_contactsList(filename)
     found_contacts = []

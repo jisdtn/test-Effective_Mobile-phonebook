@@ -1,13 +1,14 @@
 from typing import Dict
 
-from phonebook.notes.models import Contact
-from phonebook.notes.utils import read_contactsList, add_contact, edit_contact, searchInPhonebook
+from models import Contact
+from utils import read_contactsList, add_contact, edit_contact, searchInPhonebook
 
 
 def console_interface() -> None:
     """Console interface logic."""
     print("Welcome to the Phonebook!")
-    filename: str = 'data.txt'
+
+    filename: str = 'notes/data.txt'
 
     while True:
         print("\nMenu:")
