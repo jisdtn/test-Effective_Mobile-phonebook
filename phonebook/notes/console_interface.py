@@ -1,10 +1,13 @@
-from .models import Contact
-from .utils import read_contactsList, add_contact, edit_contact, searchInPhonebook
+from typing import Dict
+
+from phonebook.notes.models import Contact
+from phonebook.notes.utils import read_contactsList, add_contact, edit_contact, searchInPhonebook
 
 
-def console_interface():
+def console_interface() -> None:
+    """Console interface logic."""
     print("Welcome to the Phonebook!")
-    filename = 'data.txt'
+    filename: str = 'data.txt'
 
     while True:
         print("\nMenu:")
@@ -14,40 +17,40 @@ def console_interface():
         print("4. Search for contacts")
         print("5. Exit")
 
-        choice = input("Enter your choice: ")
+        choice: str = input("Enter your choice: ")
 
         if choice == '1':
             contacts = read_contactsList(filename)
             for contact in contacts:
                 print(contact)
         elif choice == '2':
-            last_name = input("Enter last name: ")
-            first_name = input("Enter first name: ")
-            middle_name = input("Enter middle name: ")
-            organization = input("Enter organization: ")
-            work_phone = input("Enter work phone: ")
-            personal_phone = input("Enter personal phone: ")
+            last_name: str = input("Enter last name: ")
+            first_name: str = input("Enter first name: ")
+            middle_name: str = input("Enter middle name: ")
+            organization: str = input("Enter organization: ")
+            work_phone: str = input("Enter work phone: ")
+            personal_phone: str = input("Enter personal phone: ")
             new_contact = Contact(last_name, first_name, middle_name, organization, work_phone, personal_phone)
             add_contact(filename, new_contact)
             print("Contact added successfully!")
         elif choice == '3':
-            last_name = input("Enter last name: ")
-            first_name = input("Enter first name: ")
-            middle_name = input("Enter middle name: ")
-            organization = input("Enter organization: ")
-            work_phone = input("Enter work phone: ")
-            personal_phone = input("Enter personal phone: ")
+            last_name: str = input("Enter last name: ")
+            first_name: str = input("Enter first name: ")
+            middle_name: str = input("Enter middle name: ")
+            organization: str = input("Enter organization: ")
+            work_phone: str = input("Enter work phone: ")
+            personal_phone: str = input("Enter personal phone: ")
             edited_contact = Contact(last_name, first_name, middle_name, organization, work_phone, personal_phone)
             edit_contact(filename, edited_contact)
             print("Contact edited successfully!")
         elif choice == '4':
-            last_name = input("Enter last name (press Enter to skip): ")
-            first_name = input("Enter first name (press Enter to skip): ")
-            middle_name = input("Enter middle name (press Enter to skip): ")
-            organization = input("Enter organization (press Enter to skip): ")
-            work_phone = input("Enter work phone (press Enter to skip): ")
-            personal_phone = input("Enter personal phone (press Enter to skip): ")
-            search_criteria = {}
+            last_name: str = input("Enter last name (press Enter to skip): ")
+            first_name: str = input("Enter first name (press Enter to skip): ")
+            middle_name: str = input("Enter middle name (press Enter to skip): ")
+            organization: str = input("Enter organization (press Enter to skip): ")
+            work_phone: str = input("Enter work phone (press Enter to skip): ")
+            personal_phone: str = input("Enter personal phone (press Enter to skip): ")
+            search_criteria: Dict[str, str] = {}
             if last_name:
                 search_criteria['last_name'] = last_name
             if first_name:

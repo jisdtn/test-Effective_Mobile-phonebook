@@ -1,5 +1,6 @@
 
 class Contact:
+    """The model of Contact"""
     def __init__(self, last_name, first_name, middle_name, organization, work_phone, personal_phone):
         self.last_name = last_name
         self.first_name = first_name
