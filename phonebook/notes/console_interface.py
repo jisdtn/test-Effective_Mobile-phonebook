@@ -35,15 +35,7 @@ def console_interface() -> None:
             add_contact(filename, new_contact)
             print("Contact added successfully!")
         elif choice == '3':
-            last_name: str = input("Enter last name: ")
-            first_name: str = input("Enter first name: ")
-            middle_name: str = input("Enter middle name: ")
-            organization: str = input("Enter organization: ")
-            work_phone: str = input("Enter work phone: ")
-            personal_phone: str = input("Enter personal phone: ")
-            edited_contact = Contact(last_name, first_name, middle_name, organization, work_phone, personal_phone)
-            edit_contact(filename, edited_contact)
-            print("Contact edited successfully!")
+            edit_contact(filename)
         elif choice == '4':
             last_name: str = input("Enter last name (press Enter to skip): ")
             first_name: str = input("Enter first name (press Enter to skip): ")
