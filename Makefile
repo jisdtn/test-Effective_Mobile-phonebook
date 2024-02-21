@@ -1,3 +1,5 @@
-target: notes
-	python3 console_interface.py
+.PHONY: run
+run:
+	docker-compose run --build --rm app
+#	docker-compose -f docker-compose.yml up --build
 

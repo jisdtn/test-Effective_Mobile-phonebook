@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./phonebook:/phonebook
+    working_dir: /phonebook/notes
+    command: python3 console_interface.py
+    container_name: phonebook

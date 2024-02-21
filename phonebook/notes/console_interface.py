@@ -1,14 +1,16 @@
+import sys
 from typing import Dict
 
 from models import Contact
-from utils import read_contactsList, add_contact, edit_contact, searchInPhonebook
+from utils import (add_contact, edit_contact, read_contactsList,
+                   searchInPhonebook)
 
 
 def console_interface() -> None:
     """Console interface logic."""
     print("Welcome to the Phonebook!")
 
-    filename: str = 'notes/data.txt'
+    filename: str = 'data.txt'
 
     while True:
         print("\nMenu:")
@@ -19,6 +21,7 @@ def console_interface() -> None:
         print("5. Exit")
 
         choice: str = input("Enter your choice: ")
+        sys.stdout.flush()
 
         if choice == '1':
             contacts = read_contactsList(filename)
@@ -31,18 +34,25 @@ def console_interface() -> None:
             organization: str = input("Enter organization: ")
             work_phone: str = input("Enter work phone: ")
             personal_phone: str = input("Enter personal phone: ")
-            new_contact = Contact(last_name, first_name, middle_name, organization, work_phone, personal_phone)
+            new_contact = Contact(last_name, first_name,
+                                  middle_name, organization,
+                                  work_phone, personal_phone)
             add_contact(filename, new_contact)
             print("Contact added successfully!")
         elif choice == '3':
             edit_contact(filename)
         elif choice == '4':
             last_name: str = input("Enter last name (press Enter to skip): ")
-            first_name: str = input("Enter first name (press Enter to skip): ")
-            middle_name: str = input("Enter middle name (press Enter to skip): ")
-            organization: str = input("Enter organization (press Enter to skip): ")
-            work_phone: str = input("Enter work phone (press Enter to skip): ")
-            personal_phone: str = input("Enter personal phone (press Enter to skip): ")
+            first_name: str = input("Enter first name "
+                                    "(press Enter to skip): ")
+            middle_name: str = input("Enter middle name "
+                                     "(press Enter to skip): ")
+            organization: str = input("Enter organization "
+                                      "(press Enter to skip): ")
+            work_phone: str = input("Enter work phone "
+                                    "(press Enter to skip): ")
+            personal_phone: str = input("Enter personal phone "
+                                        "(press Enter to skip): ")
             search_criteria: Dict[str, str] = {}
             if last_name:
                 search_criteria['last_name'] = last_name
@@ -67,6 +77,7 @@ def console_interface() -> None:
             break
         else:
             print("Invalid choice!")
+
 
 if __name__ == "__main__":
     console_interface()

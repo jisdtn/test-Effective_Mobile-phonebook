@@ -13,6 +13,7 @@ def read_contactsList(filename: str) -> List:
             contacts.append(contact)
     return contacts
 
+
 def write_contacts(filename: str, contacts: List) -> None:
     """Writes data to a file."""
     with open(filename, 'a') as file:
@@ -21,11 +22,13 @@ def write_contacts(filename: str, contacts: List) -> None:
                        f"{contact.middle_name},{contact.organization},"
                        f"{contact.work_phone},{contact.personal_phone}\n")
 
+
 def add_contact(filename: str, contact: Contact) -> None:
     """Adds a Contact object to a contact list."""
     contacts = read_contactsList(filename)
     contacts.append(contact)
     write_contacts(filename, contacts)
+
 
 def edit_contact(filename: str):
     contacts = read_contactsList(filename)
@@ -52,12 +55,23 @@ def edit_contact(filename: str):
     contact = found_contacts[0]
     print("Contact found. Enter the new details:")
 
-    contact.last_name = input(f"Last Name ({contact.last_name}): ") or contact.last_name
-    contact.first_name = input(f"First Name ({contact.first_name}): ") or contact.first_name
-    contact.middle_name = input(f"Middle Name ({contact.middle_name}): ") or contact.middle_name
-    contact.organization = input(f"Organization ({contact.organization}): ") or contact.organization
-    contact.work_phone = input(f"Work Phone ({contact.work_phone}): ") or contact.work_phone
-    contact.personal_phone = input(f"Personal Phone ({contact.personal_phone}): ") or contact.personal_phone
+    contact.last_name = input(f"Last Name "
+                              f"({contact.last_name}): ") or contact.last_name
+    contact.first_name = input(
+        f"First Name {contact.first_name}: "
+    ) or contact.first_name
+    contact.middle_name = input(
+        f"Middle Name {contact.middle_name}): "
+    ) or contact.middle_name
+    contact.organization = input(
+        f"Organization {contact.organization}): "
+    ) or contact.organization
+    contact.work_phone = input(
+        f"Work Phone ({contact.work_phone}): "
+    ) or contact.work_phone
+    contact.personal_phone = input(
+        f"Personal Phone {contact.personal_phone}): "
+    ) or contact.personal_phone
 
     write_contacts(filename, contacts)
     print("Contact edited successfully!")
@@ -68,6 +82,7 @@ def searchInPhonebook(filename: str, **kwargs: object) -> List:
     contacts = read_contactsList(filename)
     found_contacts = []
     for contact in contacts:
-        if all(getattr(contact, attr) == value for attr, value in kwargs.items()):
+        if all(getattr(contact, attr) == value
+               for attr, value in kwargs.items()):
             found_contacts.append(contact)
     return found_contacts
